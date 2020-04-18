@@ -1,0 +1,295 @@
+<rss version="2.0" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Hacker News: Newest</title>
+        <link>https://news.ycombinator.com/newest</link>
+        <description>Hacker News RSS</description>
+        <docs>https://hnrss.org/</docs>
+        <generator>go-hnrss v1.0-10-g4f1b850</generator>
+        <lastBuildDate>Sat, 18 Apr 2020 13:50:41 +0000</lastBuildDate>
+        <atom:link href="https://hnrss.org/newest" rel="self" type="application/rss+xml"></atom:link>
+        <item>
+            <title><![CDATA[No evidence that people who have survived coronavirus have immunity]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://www.telegraph.co.uk/news/2020/04/17/no-evidence-people-have-survived-coronavirus-have-immunity-says/">https://www.telegraph.co.uk/news/2020/04/17/no-evidence-people-have-survived-coronavirus-have-immunity-says/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907699">https://news.ycombinator.com/item?id=22907699</a></p>
+<p>Points: 1</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:48:39 +0000</pubDate>
+            <link>https://www.telegraph.co.uk/news/2020/04/17/no-evidence-people-have-survived-coronavirus-have-immunity-says/</link>
+            <dc:creator>pmoriarty</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907699</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907699</guid>
+        </item>
+        <item>
+            <title><![CDATA[A Drugstore's Website in Japan]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="http://www.hm.aitai.ne.jp/~naitonet/">http://www.hm.aitai.ne.jp/~naitonet/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907694">https://news.ycombinator.com/item?id=22907694</a></p>
+<p>Points: 1</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:47:49 +0000</pubDate>
+            <link>http://www.hm.aitai.ne.jp/~naitonet/</link>
+            <dc:creator>marvindanig</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907694</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907694</guid>
+        </item>
+        <item>
+            <title><![CDATA[1957–58 Influenza Pandemic]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://en.wikipedia.org/wiki/1957%E2%80%9358_influenza_pandemic">https://en.wikipedia.org/wiki/1957%E2%80%9358_influenza_pandemic</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907674">https://news.ycombinator.com/item?id=22907674</a></p>
+<p>Points: 1</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:44:45 +0000</pubDate>
+            <link>https://en.wikipedia.org/wiki/1957%E2%80%9358_influenza_pandemic</link>
+            <dc:creator>watoc</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907674</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907674</guid>
+        </item>
+        <item>
+            <title><![CDATA[Charvaka: An ancient school of Indian materialism]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://en.wikipedia.org/wiki/Charvaka">https://en.wikipedia.org/wiki/Charvaka</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907667">https://news.ycombinator.com/item?id=22907667</a></p>
+<p>Points: 1</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:44:11 +0000</pubDate>
+            <link>https://en.wikipedia.org/wiki/Charvaka</link>
+            <dc:creator>happy-go-lucky</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907667</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907667</guid>
+        </item>
+        <item>
+            <title><![CDATA[Ask HN: How to get into offensive security?]]></title>
+            <description><![CDATA[
+<p>I understand web application security, that means I know what the OWASP top 10 are and I know how they work. Given a 0-day I could write a script for it. I understand what people are talking about when I listen to a defcon talk or security podcast. I know what a buffer over flow is. I also understand the basics of cryptography and can write/read assembly if I absolutely have to. I know how to read/write iptable rules. I have taken part in CTFs.<p>1. How does one start doing bug bounties?<p>2. How does one start finding 0-days?<p>Are there any online courses that are good at teaching the above?<p>I don't want to find 0-days because of malicious reasons. I want to learn how to find them as articles about them seem clever. I like the exploratory nature of it.</p>
+<hr>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907648">https://news.ycombinator.com/item?id=22907648</a></p>
+<p>Points: 1</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:41:24 +0000</pubDate>
+            <link>https://news.ycombinator.com/item?id=22907648</link>
+            <dc:creator>break_the_bank</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907648</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907648</guid>
+        </item>
+        <item>
+            <title><![CDATA[Ask HN: Software Engineering Timeline/Estimates]]></title>
+            <description><![CDATA[
+<p>What's the general consensus among engineers in HN about estimating for your stories as an individual contributor when your Project Manager asks for an ETA?<p>Do you think estimates for software tasks are worth doing at all considering complexities you need to account for? How do you budget uncertainties?<p>How do you handle cases where the timeline gets exceeded?<p>Are there any tools (Gantt/Timeline) tools out there that you'd recommend for this?</p>
+<hr>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907645">https://news.ycombinator.com/item?id=22907645</a></p>
+<p>Points: 1</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:41:13 +0000</pubDate>
+            <link>https://news.ycombinator.com/item?id=22907645</link>
+            <dc:creator>hannofcart</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907645</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907645</guid>
+        </item>
+        <item>
+            <title><![CDATA[Apple.com could load 2 seconds faster by adopting WebP]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://mobilerank.co/post/apple-homepage-webp-irony">https://mobilerank.co/post/apple-homepage-webp-irony</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907644">https://news.ycombinator.com/item?id=22907644</a></p>
+<p>Points: 2</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:40:37 +0000</pubDate>
+            <link>https://mobilerank.co/post/apple-homepage-webp-irony</link>
+            <dc:creator>v3nom</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907644</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907644</guid>
+        </item>
+        <item>
+            <title><![CDATA[Engineers Are Contributing to the Fight Against the Outbreak]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://interestingengineering.com/how-engineers-are-contributing-to-the-fight-against-the-outbreak">https://interestingengineering.com/how-engineers-are-contributing-to-the-fight-against-the-outbreak</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907634">https://news.ycombinator.com/item?id=22907634</a></p>
+<p>Points: 1</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:40:05 +0000</pubDate>
+            <link>https://interestingengineering.com/how-engineers-are-contributing-to-the-fight-against-the-outbreak</link>
+            <dc:creator>Gedxx</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907634</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907634</guid>
+        </item>
+        <item>
+            <title><![CDATA[Show HN: Including Mapbox GL into your neo.mjs app (desktop only)]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://neomjs.github.io/pages/node_modules/neo.mjs/dist/production/apps/covid/index.html#mainview=mapboxglmap">https://neomjs.github.io/pages/node_modules/neo.mjs/dist/production/apps/covid/index.html#mainview=mapboxglmap</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907628">https://news.ycombinator.com/item?id=22907628</a></p>
+<p>Points: 1</p>
+<p># Comments: 1</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:39:15 +0000</pubDate>
+            <link>https://neomjs.github.io/pages/node_modules/neo.mjs/dist/production/apps/covid/index.html#mainview=mapboxglmap</link>
+            <dc:creator>tobiu</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907628</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907628</guid>
+        </item>
+        <item>
+            <title><![CDATA[Taleb: The Only Man Who Has a Clue]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://www.nakedcapitalism.com/2020/04/taleb-the-only-man-who-has-a-clue.html">https://www.nakedcapitalism.com/2020/04/taleb-the-only-man-who-has-a-clue.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907621">https://news.ycombinator.com/item?id=22907621</a></p>
+<p>Points: 2</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:38:35 +0000</pubDate>
+            <link>https://www.nakedcapitalism.com/2020/04/taleb-the-only-man-who-has-a-clue.html</link>
+            <dc:creator>imartin2k</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907621</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907621</guid>
+        </item>
+        <item>
+            <title><![CDATA[Watt FM Amplifier]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="http://electronics-diy.com/1-watt-fm-amplifier.php">http://electronics-diy.com/1-watt-fm-amplifier.php</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907612">https://news.ycombinator.com/item?id=22907612</a></p>
+<p>Points: 2</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:37:24 +0000</pubDate>
+            <link>http://electronics-diy.com/1-watt-fm-amplifier.php</link>
+            <dc:creator>Gedxx</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907612</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907612</guid>
+        </item>
+        <item>
+            <title><![CDATA[Show HN: VidGrid – A large-screen news channel viewer with simple audio control]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://vidgrid.tk.gg">https://vidgrid.tk.gg</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907593">https://news.ycombinator.com/item?id=22907593</a></p>
+<p>Points: 2</p>
+<p># Comments: 1</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:34:17 +0000</pubDate>
+            <link>https://vidgrid.tk.gg</link>
+            <dc:creator>MattieTK</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907593</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907593</guid>
+        </item>
+        <item>
+            <title><![CDATA[Quantum Chemistry Done Wrong (With Python)]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://github.com/lisyarus/chembook">https://github.com/lisyarus/chembook</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907590">https://news.ycombinator.com/item?id=22907590</a></p>
+<p>Points: 1</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:34:00 +0000</pubDate>
+            <link>https://github.com/lisyarus/chembook</link>
+            <dc:creator>itwasdns</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907590</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907590</guid>
+        </item>
+        <item>
+            <title><![CDATA[First-Principles Predictions and Synthesis of B50C2 by Chemical Vapor Deposition]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://www.nature.com/articles/s41598-020-61462-9">https://www.nature.com/articles/s41598-020-61462-9</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907559">https://news.ycombinator.com/item?id=22907559</a></p>
+<p>Points: 1</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:28:42 +0000</pubDate>
+            <link>https://www.nature.com/articles/s41598-020-61462-9</link>
+            <dc:creator>bookofjoe</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907559</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907559</guid>
+        </item>
+        <item>
+            <title><![CDATA[You don't have to be a genius to contribute to the open source]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://www.thatweeklytech.com/posts/5-you-don-t-have-to-be-a-genius-to-contribute-to-the-open-source">https://www.thatweeklytech.com/posts/5-you-don-t-have-to-be-a-genius-to-contribute-to-the-open-source</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907552">https://news.ycombinator.com/item?id=22907552</a></p>
+<p>Points: 1</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:26:52 +0000</pubDate>
+            <link>https://www.thatweeklytech.com/posts/5-you-don-t-have-to-be-a-genius-to-contribute-to-the-open-source</link>
+            <dc:creator>liroyleshed</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907552</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907552</guid>
+        </item>
+        <item>
+            <title><![CDATA[Riot Games response to security/privacy concerns for their anti-cheat software]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://www.riotgames.com/en/news/a-message-about-vanguard-from-our-security-privacy-teams">https://www.riotgames.com/en/news/a-message-about-vanguard-from-our-security-privacy-teams</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907547">https://news.ycombinator.com/item?id=22907547</a></p>
+<p>Points: 12</p>
+<p># Comments: 7</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:26:01 +0000</pubDate>
+            <link>https://www.riotgames.com/en/news/a-message-about-vanguard-from-our-security-privacy-teams</link>
+            <dc:creator>houzi</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907547</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907547</guid>
+        </item>
+        <item>
+            <title><![CDATA[Convert high-efficiency iPhone images to JPEG]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://sixcolors.com/post/2020/04/quick-tip-convert-high-efficiency-iphone-images-to-jpeg/">https://sixcolors.com/post/2020/04/quick-tip-convert-high-efficiency-iphone-images-to-jpeg/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907545">https://news.ycombinator.com/item?id=22907545</a></p>
+<p>Points: 1</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:25:35 +0000</pubDate>
+            <link>https://sixcolors.com/post/2020/04/quick-tip-convert-high-efficiency-iphone-images-to-jpeg/</link>
+            <dc:creator>colinprince</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907545</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907545</guid>
+        </item>
+        <item>
+            <title><![CDATA[Shishua: The fastest pseudo-random generator in the world]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://espadrine.github.io/blog/posts/shishua-the-fastest-prng-in-the-world.html">https://espadrine.github.io/blog/posts/shishua-the-fastest-prng-in-the-world.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907539">https://news.ycombinator.com/item?id=22907539</a></p>
+<p>Points: 1</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:24:36 +0000</pubDate>
+            <link>https://espadrine.github.io/blog/posts/shishua-the-fastest-prng-in-the-world.html</link>
+            <dc:creator>espadrine</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907539</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907539</guid>
+        </item>
+        <item>
+            <title><![CDATA[Stop Using Toilet Paper]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://www.nytimes.com/2020/04/03/opinion/toilet-paper-hoarding-bidets.html">https://www.nytimes.com/2020/04/03/opinion/toilet-paper-hoarding-bidets.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907528">https://news.ycombinator.com/item?id=22907528</a></p>
+<p>Points: 1</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:22:33 +0000</pubDate>
+            <link>https://www.nytimes.com/2020/04/03/opinion/toilet-paper-hoarding-bidets.html</link>
+            <dc:creator>throw0101a</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907528</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907528</guid>
+        </item>
+        <item>
+            <title><![CDATA[“People don’t want to go back to how things were before coronavirus.”]]></title>
+            <description><![CDATA[
+<p>Article URL: <a href="https://sfree.life/virtual-design-festival-li-edelkoort-free/">https://sfree.life/virtual-design-festival-li-edelkoort-free/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=22907524">https://news.ycombinator.com/item?id=22907524</a></p>
+<p>Points: 1</p>
+<p># Comments: 0</p>
+]]>            </description>
+            <pubDate>Sat, 18 Apr 2020 13:21:55 +0000</pubDate>
+            <link>https://sfree.life/virtual-design-festival-li-edelkoort-free/</link>
+            <dc:creator>jantomes</dc:creator>
+            <comments>https://news.ycombinator.com/item?id=22907524</comments>
+            <guid isPermaLink="false">https://news.ycombinator.com/item?id=22907524</guid>
+        </item>
+    </channel>
+</rss>
