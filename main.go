@@ -9,61 +9,34 @@ import (
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	"github.com/miun173/rss-reader/db"
 	"github.com/miun173/rss-reader/model"
 )
 
-type Item struct {
-	Title       string `xml:"title"`
-	Description string `xml:"description"`
-	Link        string `xml:"link"`
-}
-
-type Channel struct {
-	XMLName xml.Name `xml:"channel"`
-	Items   []Item   `xml:"item"`
-}
-
-type RSS struct {
-	XMLName xml.Name `xml:"rss"`
-	Channel Channel  `xml:"channel"`
-}
-
-var schema = `
-	CREATE TABLE IF NOT EXISTS sources (
-		id INTEGER PRIMARY KEY,
-		name TEXT NOT NULL,
-		url TEXT NOT NULL,
-		created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-		updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-		deleted_at TIMESTAMP DEFAULT NULL
-	);
-
-	CREATE TABLE IF NOT EXISTS rss_items (
-		id INTEGER PRIMARY KEY,
-		title TEXT NOT NULL,
-		link TEXT NOT NULL,
-		description TEXT NOT NULL,
-		created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-		updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-		deleted_at TIMESTAMP DEFAULT NULL
-	);
-
-	CREATE UNIQUE INDEX IF NOT EXISTS rss_items_link_idx ON rss_items(link);
-`
-
 func main() {
-	dbConn := connectDB()
+	dbConn := db.NewSQLite3()
+	db.Migrate(dbConn)
 	defer dbConn.Close()
 
 	items := fetchRSSItems()
 
 	for _, item := range items {
+		oldRSS, err := findRSSItemByLink(dbConn, item.Link)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		// skip if exists
+		if oldRSS != nil {
+			continue
+		}
+
 		now := time.Now()
 		item.ID = time.Now().UnixNano()
 		item.CreatedAt = now
 		item.UpdatedAt = now
 
-		err := dbConn.Create(&item).Error
+		err = dbConn.Create(&item).Error
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -72,18 +45,21 @@ func main() {
 	log.Println("finished")
 }
 
-func connectDB() *gorm.DB {
-	db, err := gorm.Open("sqlite3", "rss-reader.db")
-	if err != nil {
-		panic("failed to connect database")
+func findRSSItemByLink(db *gorm.DB, link string) (rssItem *model.RSSItem, err error) {
+	item := model.RSSItem{}
+	err = db.First(&item, "link = ?", link).Error
+	if err != nil && gorm.IsRecordNotFoundError(err) {
+		return nil, nil
 	}
 
-	err = db.Exec(schema).Error
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
+		return nil, err
 	}
 
-	return db
+	rssItem = &item
+
+	return
 }
 
 func fetchRSSItems() []model.RSSItem {
