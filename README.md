@@ -1,4 +1,5 @@
 # RSS Reader
 
 - [x] fetch & parse rss
-- [ ] save rss to db
+- [x] save rss to db
+- [x] add cron job (worker) to fetch rss
