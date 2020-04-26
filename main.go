@@ -7,6 +7,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"github.com/miun173/rss-reader/db"
 	"github.com/miun173/rss-reader/repository"
+	"github.com/miun173/rss-reader/worker"
 )
 
 func main() {
@@ -15,15 +16,13 @@ func main() {
 	defer dbConn.Close()
 
 	rssItemRepo := repository.NewRSSItemRepository(dbConn)
+	sourceRepo := repository.NewSourceRepository(dbConn)
+	wrk := worker.NewWorker(sourceRepo, rssItemRepo)
 
 	log.Println("start worker ...")
-	count := 1
-	gocron.Every(5).Seconds().Do(func() {
-		log.Println("fetch >>> ", count)
-		items := rssItemRepo.FetchFromSource()
-		rssItemRepo.SaveMany(items)
+	gocron.Every(1).Minute().Do(func() {
+		wrk.FetchRSS()
 		log.Println("finished")
-		count++
 	})
 	<-gocron.Start()
 }
