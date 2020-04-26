@@ -2,6 +2,7 @@ package worker
 
 import (
 	"log"
+	"sync"
 
 	"github.com/miun173/rss-reader/model"
 	"github.com/miun173/rss-reader/repository"
@@ -25,7 +26,7 @@ func NewWorker(sr *repository.SourceRepository,
 // FetchRSS :nodoc:
 func (w *Worker) FetchRSS() {
 	var (
-		limit  int64 = 2
+		limit  int64 = 4
 		offset int64 = 0
 	)
 
@@ -48,14 +49,30 @@ func (w *Worker) FetchRSS() {
 
 // fetchItems fetch rss items & saved it to db
 func (w *Worker) fetchItems(sources []model.Source) {
-	var rssItems []model.RSSItem
+	rssItemsCh := make(chan []model.RSSItem, len(sources))
+	wg := sync.WaitGroup{}
 	for _, src := range sources {
+		wg.Add(1)
 		log.Println("fetch rss items from ", src.Name)
-		items, err := w.rssItemRepo.FetchFromSource(src.URL)
-		if err != nil {
-			break
-		}
 
+		go func(url string) {
+			defer wg.Done()
+
+			items, err := w.rssItemRepo.FetchFromSource(url)
+			if err != nil {
+				log.Println("error: ", err)
+				return
+			}
+
+			rssItemsCh <- items
+		}(src.URL)
+	}
+
+	wg.Wait()
+	close(rssItemsCh)
+
+	var rssItems []model.RSSItem
+	for items := range rssItemsCh {
 		rssItems = append(rssItems, items...)
 	}
 
