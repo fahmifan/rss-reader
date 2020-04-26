@@ -24,11 +24,12 @@ func NewRSSItemRepository(db *gorm.DB) *RSSItemRepository {
 }
 
 // SaveMany :nodoc:
-func (r *RSSItemRepository) SaveMany(items []model.RSSItem) {
+func (r *RSSItemRepository) SaveMany(items []model.RSSItem) error {
 	for _, item := range items {
 		oldRSS, err := r.FindByLink(item.Link)
 		if err != nil {
-			log.Fatal(err)
+			log.Println("error: ", err)
+			return err
 		}
 
 		// skip if exists
@@ -36,16 +37,30 @@ func (r *RSSItemRepository) SaveMany(items []model.RSSItem) {
 			continue
 		}
 
-		now := time.Now()
-		item.ID = time.Now().UnixNano()
-		item.CreatedAt = now
-		item.UpdatedAt = now
-
-		err = r.db.Create(&item).Error
+		err = r.Create(&item)
 		if err != nil {
-			log.Fatal(err)
+			log.Println("error: ", err)
+			return err
 		}
 	}
+
+	return nil
+}
+
+// Create :nodoc:
+func (r *RSSItemRepository) Create(item *model.RSSItem) (err error) {
+	now := time.Now()
+	item.ID = time.Now().UnixNano()
+	item.CreatedAt = now
+	item.UpdatedAt = now
+
+	err = r.db.Create(&item).Error
+	if err != nil {
+		log.Println("error: ", err)
+		return err
+	}
+
+	return nil
 }
 
 // FindByLink :nodoc:
@@ -67,16 +82,18 @@ func (r *RSSItemRepository) FindByLink(link string) (rssItem *model.RSSItem, err
 }
 
 // FetchFromSource :nodoc:
-func (r *RSSItemRepository) FetchFromSource() []model.RSSItem {
+func (r *RSSItemRepository) FetchFromSource(source string) ([]model.RSSItem, error) {
 	// fetch from API
-	res, err := http.Get("https://hnrss.org/newest")
+	res, err := http.Get(source)
 	if err != nil {
-		log.Fatal(err)
+		log.Println("error: ", err)
+		return nil, err
 	}
 
 	bt, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		log.Fatal(err)
+		log.Println("error: ", err)
+		return nil, err
 	}
 	defer func() {
 		_ = res.Body.Close()
@@ -85,8 +102,9 @@ func (r *RSSItemRepository) FetchFromSource() []model.RSSItem {
 	rss := model.RSS{}
 	err = xml.Unmarshal(bt, &rss)
 	if err != nil {
-		log.Fatal(err)
+		log.Println("error: ", err)
+		return nil, err
 	}
 
-	return rss.Channel.Items
+	return rss.Channel.Items, nil
 }
