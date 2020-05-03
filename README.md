@@ -16,4 +16,4 @@ INSERT INTO sources (id,name,url,created_at,updated_at,deleted_at) VALUES (
 ```
 - [ ] expose rest api
     - [x] list sources
-    - [ ] list rss items from a source
+    - [x] list rss items from a source

@@ -19,8 +19,9 @@ func main() {
 	defer dbConn.Close()
 
 	sourceRepo := repository.NewSourceRepository(dbConn)
+	rssItemRepo := repository.NewRSSItemRepository(dbConn)
 
-	server := restapi.NewServer(sourceRepo)
+	server := restapi.NewServer(sourceRepo, rssItemRepo)
 	log.Println("server start @ :8080")
 	log.Fatal(fasthttp.
 		ListenAndServe(":8080", server.Router().Handler),

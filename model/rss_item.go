@@ -19,14 +19,14 @@ type Channel struct {
 
 // RSSItem :nodoc:
 type RSSItem struct {
-	XMLName xml.Name `xml:"item"`
+	XMLName xml.Name `xml:"item" json:"-"`
 
-	ID          int64      `gorm:"primary_key" xml:"-"`
-	SourceID    int64      `xml:"-"`
-	Title       string     `xml:"title"`
-	Description string     `xml:"description"`
-	Link        string     `xml:"link"`
-	CreatedAt   time.Time  `xml:"-"`
-	UpdatedAt   time.Time  `xml:"-"`
-	DeletedAt   *time.Time `xml:"-"`
+	ID          int64      `gorm:"primary_key" xml:"-" json:"id"`
+	SourceID    int64      `xml:"-" json:"sourceID"`
+	Title       string     `xml:"title" json:"title"`
+	Description string     `xml:"description" json:"description"`
+	Link        string     `xml:"link" json:"link"`
+	CreatedAt   time.Time  `xml:"-" json:"createdAt"`
+	UpdatedAt   time.Time  `xml:"-" json:"updatedAt"`
+	DeletedAt   *time.Time `xml:"-" json:"-"`
 }

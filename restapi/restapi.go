@@ -12,15 +12,18 @@ import (
 
 // Server :nodoc:
 type Server struct {
-	router     *router.Router
-	sourceRepo *repository.SourceRepository
+	router      *router.Router
+	sourceRepo  *repository.SourceRepository
+	rssItemRepo *repository.RSSItemRepository
 }
 
 // NewServer :nodoc:
-func NewServer(sr *repository.SourceRepository) *Server {
+func NewServer(sr *repository.SourceRepository,
+	rir *repository.RSSItemRepository) *Server {
 	s := &Server{
-		router:     router.New(),
-		sourceRepo: sr,
+		router:      router.New(),
+		sourceRepo:  sr,
+		rssItemRepo: rir,
 	}
 
 	return s
@@ -31,6 +34,7 @@ func (s *Server) Router() *router.Router {
 	s.router.GET("/ping", ping)
 	s.router.GET("/sources/{id}", s.findSourceByID)
 	s.router.GET("/sources", s.findAllSources)
+	s.router.GET("/rss/source/{sourceID}", s.findRSSItemsBySourceID)
 
 	return s.router
 }
@@ -63,5 +67,13 @@ func (s *Server) findAllSources(ctx *fasthttp.RequestCtx) {
 }
 
 func (s *Server) findRSSItemsBySourceID(ctx *fasthttp.RequestCtx) {
+	sourceID := helper.StringToInt64(ctx.UserValue("sourceID").(string))
+	sources, err := s.rssItemRepo.FindBySourceID(sourceID, 10, 0)
+	if err != nil {
+		log.Println("error : ", err.Error())
+		writeError(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
 
+	writeOK(ctx, sources)
 }

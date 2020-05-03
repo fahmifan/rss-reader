@@ -11,6 +11,10 @@ import (
 	"github.com/miun173/rss-reader/model"
 )
 
+const (
+	_defaultSize = int(10)
+)
+
 // RSSItemRepository :nodoc:
 type RSSItemRepository struct {
 	db *gorm.DB
@@ -108,4 +112,25 @@ func (r *RSSItemRepository) FetchFromSource(source string) ([]model.RSSItem, err
 	}
 
 	return rss.Channel.Items, nil
+}
+
+// FindBySourceID :nodoc:
+func (r *RSSItemRepository) FindBySourceID(sourceID int64, size, page int) ([]model.RSSItem, error) {
+	if size <= 0 {
+		size = _defaultSize
+	}
+
+	var items []model.RSSItem
+	err := r.db.Where("source_id = ?", sourceID).
+		Limit(size).
+		Offset(page).
+		Find(&items).
+		Error
+
+	if err != nil {
+		log.Println("error : ", err.Error())
+		return nil, err
+	}
+
+	return items, nil
 }
