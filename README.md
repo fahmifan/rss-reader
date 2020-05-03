@@ -3,7 +3,7 @@
 - [x] fetch & parse rss
 - [x] save rss to db
 - [x] add cron job (worker) to fetch rss
-- [ ] fetch rss from multiple sources 
+- [x] fetch rss from multiple sources 
 ```sql
 INSERT INTO sources (id,name,url,created_at,updated_at,deleted_at) VALUES (
 1,'espn nba','https://www.espn.com/espn/rss/nba/news','2020-04-26 06:08:10','2020-04-26 06:08:10',NULL);
