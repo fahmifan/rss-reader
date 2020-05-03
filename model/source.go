@@ -4,10 +4,10 @@ import "time"
 
 // Source :nodoc:
 type Source struct {
-	ID        int64 `gorm:"primary_key"`
-	Name      string
-	URL       string
-	CreatedAt time.Time
-	UpdatedAt time.Time
-	DeletedAt *time.Time
+	ID        int64      `gorm:"primary_key" json:"id"`
+	Name      string     `json:"name"`
+	URL       string     `json:"url"`
+	CreatedAt time.Time  `json:"createdAt"`
+	UpdatedAt time.Time  `json:"updatedAt"`
+	DeletedAt *time.Time `json:"-"`
 }
