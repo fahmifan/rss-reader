@@ -67,8 +67,12 @@ func (s *Server) findAllSources(ctx *fasthttp.RequestCtx) {
 }
 
 func (s *Server) findRSSItemsBySourceID(ctx *fasthttp.RequestCtx) {
+	args := ctx.QueryArgs()
+	size := helper.StringToInt(string(args.Peek("size")))
+	page := helper.StringToInt(string(args.Peek("page")))
 	sourceID := helper.StringToInt64(ctx.UserValue("sourceID").(string))
-	sources, err := s.rssItemRepo.FindBySourceID(sourceID, 10, 0)
+
+	sources, err := s.rssItemRepo.FindBySourceID(sourceID, size, page)
 	if err != nil {
 		log.Println("error : ", err.Error())
 		writeError(ctx, http.StatusInternalServerError, err.Error())

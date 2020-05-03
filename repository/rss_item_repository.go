@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	_defaultSize = int(10)
+	_maxQuerySize = int(10)
 )
 
 // RSSItemRepository :nodoc:
@@ -116,8 +116,12 @@ func (r *RSSItemRepository) FetchFromSource(source string) ([]model.RSSItem, err
 
 // FindBySourceID :nodoc:
 func (r *RSSItemRepository) FindBySourceID(sourceID int64, size, page int) ([]model.RSSItem, error) {
-	if size <= 0 {
-		size = _defaultSize
+	if size <= 0 || size > _maxQuerySize {
+		size = _maxQuerySize
+	}
+
+	if page < 0 {
+		page = 0
 	}
 
 	var items []model.RSSItem

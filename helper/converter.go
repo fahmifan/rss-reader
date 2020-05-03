@@ -13,3 +13,13 @@ func StringToInt64(val string) int64 {
 
 	return num
 }
+
+// StringToInt :nodoc:
+func StringToInt(val string) int {
+	num, err := strconv.Atoi(val)
+	if err != nil {
+		return 0
+	}
+
+	return num
+}
