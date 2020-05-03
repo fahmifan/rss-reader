@@ -22,6 +22,7 @@ type RSSItem struct {
 	XMLName xml.Name `xml:"item"`
 
 	ID          int64      `gorm:"primary_key" xml:"-"`
+	SourceID    int64      `xml:"-"`
 	Title       string     `xml:"title"`
 	Description string     `xml:"description"`
 	Link        string     `xml:"link"`

@@ -24,7 +24,7 @@ func NewRSSItemRepository(db *gorm.DB) *RSSItemRepository {
 }
 
 // SaveMany :nodoc:
-func (r *RSSItemRepository) SaveMany(items []model.RSSItem) error {
+func (r *RSSItemRepository) SaveMany(sourceID int64, items []model.RSSItem) error {
 	for _, item := range items {
 		oldRSS, err := r.FindByLink(item.Link)
 		if err != nil {
@@ -37,7 +37,7 @@ func (r *RSSItemRepository) SaveMany(items []model.RSSItem) error {
 			continue
 		}
 
-		err = r.Create(&item)
+		err = r.Create(sourceID, &item)
 		if err != nil {
 			log.Println("error: ", err)
 			return err
@@ -48,9 +48,10 @@ func (r *RSSItemRepository) SaveMany(items []model.RSSItem) error {
 }
 
 // Create :nodoc:
-func (r *RSSItemRepository) Create(item *model.RSSItem) (err error) {
+func (r *RSSItemRepository) Create(sourceID int64, item *model.RSSItem) (err error) {
 	now := time.Now()
 	item.ID = time.Now().UnixNano()
+	item.SourceID = sourceID
 	item.CreatedAt = now
 	item.UpdatedAt = now
 
