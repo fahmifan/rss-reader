@@ -56,7 +56,11 @@ func (s *Server) findSourceByID(ctx *fasthttp.RequestCtx) {
 }
 
 func (s *Server) findAllSources(ctx *fasthttp.RequestCtx) {
-	sources, err := s.sourceRepo.FindAll(10, 0)
+	args := ctx.QueryArgs()
+	size := helper.StringToInt(string(args.Peek("size")))
+	page := helper.StringToInt(string(args.Peek("page")))
+
+	sources, err := s.sourceRepo.FindAll(size, page)
 	if err != nil {
 		log.Println("error : ", err)
 		writeError(ctx, http.StatusNotFound, err.Error())

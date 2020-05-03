@@ -11,10 +11,6 @@ import (
 	"github.com/miun173/rss-reader/model"
 )
 
-const (
-	_maxQuerySize = int(10)
-)
-
 // RSSItemRepository :nodoc:
 type RSSItemRepository struct {
 	db *gorm.DB

@@ -31,8 +31,8 @@ func NewWorker(sr *repository.SourceRepository,
 // FetchRSS :nodoc:
 func (w *Worker) FetchRSS() {
 	var (
-		limit  int64 = 4
-		offset int64 = 0
+		limit  int = 4
+		offset int = 0
 	)
 
 	for {
