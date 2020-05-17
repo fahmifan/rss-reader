@@ -9,10 +9,6 @@ import (
 	"github.com/valyala/fasthttp"
 )
 
-func ping(ctx *fasthttp.RequestCtx) {
-	ctx.WriteString("pong")
-}
-
 func main() {
 	dbConn := db.NewSQLite3()
 	db.Migrate(dbConn)
