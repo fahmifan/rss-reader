@@ -1,6 +1,9 @@
 package model
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 // Source :nodoc:
 type Source struct {
@@ -10,4 +13,9 @@ type Source struct {
 	CreatedAt time.Time  `json:"createdAt"`
 	UpdatedAt time.Time  `json:"updatedAt"`
 	DeletedAt *time.Time `json:"-"`
+}
+
+// NewSourceCacheKeyByID :nodoc:
+func NewSourceCacheKeyByID(id int64) string {
+	return fmt.Sprintf("source.id.%d", id)
 }
