@@ -71,15 +71,33 @@ func (s *SourceRepository) FindAll(size, page int) (sources []model.Source, err 
 		page = 0
 	}
 
+	var ids []int64
+
 	err = s.db.
+		Model(model.Source{}).
 		Limit(size).
 		Offset(page).
-		Find(&sources).
+		Pluck("id", &ids).
 		Error
 
 	if err != nil && !gorm.IsRecordNotFoundError(err) {
 		log.Println("error: ", err)
 		return sources, err
+	}
+
+	for _, id := range ids {
+		src, err := s.FindByID(id)
+		if err != nil {
+			log.Println("error : ", err)
+			return nil, err
+		}
+
+		sources = append(sources, *src)
+	}
+
+	if err != nil {
+		log.Println("error : ", err)
+		return nil, err
 	}
 
 	return sources, nil
@@ -88,7 +106,6 @@ func (s *SourceRepository) FindAll(size, page int) (sources []model.Source, err 
 func (s *SourceRepository) findFromCache(cacheKey string) (*model.Source, error) {
 	item, ok := s.cacher.Get(cacheKey)
 	if !ok {
-		log.Println("not found in cache")
 		return nil, nil
 	}
 
@@ -96,8 +113,6 @@ func (s *SourceRepository) findFromCache(cacheKey string) (*model.Source, error)
 	if !ok {
 		return nil, errors.New("failed to cast")
 	}
-
-	log.Println("found in cache")
 
 	return &src, nil
 }
