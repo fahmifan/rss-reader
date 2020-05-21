@@ -24,7 +24,7 @@ func NewRSSItemRepository(db *gorm.DB) *RSSItemRepository {
 }
 
 // SaveMany :nodoc:
-func (r *RSSItemRepository) SaveMany(items []model.RSSItem) error {
+func (r *RSSItemRepository) SaveMany(sourceID int64, items []model.RSSItem) error {
 	for _, item := range items {
 		oldRSS, err := r.FindByLink(item.Link)
 		if err != nil {
@@ -37,7 +37,7 @@ func (r *RSSItemRepository) SaveMany(items []model.RSSItem) error {
 			continue
 		}
 
-		err = r.Create(&item)
+		err = r.Create(sourceID, &item)
 		if err != nil {
 			log.Println("error: ", err)
 			return err
@@ -48,9 +48,10 @@ func (r *RSSItemRepository) SaveMany(items []model.RSSItem) error {
 }
 
 // Create :nodoc:
-func (r *RSSItemRepository) Create(item *model.RSSItem) (err error) {
+func (r *RSSItemRepository) Create(sourceID int64, item *model.RSSItem) (err error) {
 	now := time.Now()
 	item.ID = time.Now().UnixNano()
+	item.SourceID = sourceID
 	item.CreatedAt = now
 	item.UpdatedAt = now
 
@@ -107,4 +108,29 @@ func (r *RSSItemRepository) FetchFromSource(source string) ([]model.RSSItem, err
 	}
 
 	return rss.Channel.Items, nil
+}
+
+// FindBySourceID :nodoc:
+func (r *RSSItemRepository) FindBySourceID(sourceID int64, size, page int) ([]model.RSSItem, error) {
+	if size <= 0 || size > _maxQuerySize {
+		size = _maxQuerySize
+	}
+
+	if page < 0 {
+		page = 0
+	}
+
+	var items []model.RSSItem
+	err := r.db.Where("source_id = ?", sourceID).
+		Limit(size).
+		Offset(page).
+		Find(&items).
+		Error
+
+	if err != nil {
+		log.Println("error : ", err.Error())
+		return nil, err
+	}
+
+	return items, nil
 }

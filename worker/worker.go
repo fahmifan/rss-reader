@@ -8,6 +8,11 @@ import (
 	"github.com/miun173/rss-reader/repository"
 )
 
+type rss struct {
+	SourceID int64
+	Items    []model.RSSItem
+}
+
 // Worker :nodoc:
 type Worker struct {
 	sourceRepo  *repository.SourceRepository
@@ -26,8 +31,8 @@ func NewWorker(sr *repository.SourceRepository,
 // FetchRSS :nodoc:
 func (w *Worker) FetchRSS() {
 	var (
-		limit  int64 = 4
-		offset int64 = 0
+		limit  int = 4
+		offset int = 0
 	)
 
 	for {
@@ -49,13 +54,13 @@ func (w *Worker) FetchRSS() {
 
 // fetchItems fetch rss items & saved it to db
 func (w *Worker) fetchItems(sources []model.Source) {
-	rssItemsCh := make(chan []model.RSSItem, len(sources))
+	rssCh := make(chan rss, len(sources))
 	wg := sync.WaitGroup{}
 	for _, src := range sources {
 		wg.Add(1)
 		log.Println("fetch rss items from ", src.Name)
 
-		go func(url string) {
+		go func(sourceID int64, url string) {
 			defer wg.Done()
 
 			items, err := w.rssItemRepo.FetchFromSource(url)
@@ -64,20 +69,20 @@ func (w *Worker) fetchItems(sources []model.Source) {
 				return
 			}
 
-			rssItemsCh <- items
-		}(src.URL)
+			rssCh <- rss{
+				SourceID: sourceID,
+				Items:    items,
+			}
+		}(src.ID, src.URL)
 	}
 
 	wg.Wait()
-	close(rssItemsCh)
+	close(rssCh)
 
-	var rssItems []model.RSSItem
-	for items := range rssItemsCh {
-		rssItems = append(rssItems, items...)
-	}
-
-	err := w.rssItemRepo.SaveMany(rssItems)
-	if err != nil {
-		log.Println(err)
+	for rss := range rssCh {
+		err := w.rssItemRepo.SaveMany(rss.SourceID, rss.Items)
+		if err != nil {
+			log.Println(err)
+		}
 	}
 }

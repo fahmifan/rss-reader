@@ -14,3 +14,6 @@ INSERT INTO sources (id,name,url,created_at,updated_at,deleted_at) VALUES (
 INSERT INTO sources (id,name,url,created_at,updated_at,deleted_at) VALUES (
 4,'hn polls','https://hnrss.org/polls','2020-04-26 06:08:53','2020-04-26 06:08:53',NULL);
 ```
+- [ ] expose rest api
+    - [x] list sources
+    - [x] list rss items from a source
