@@ -40,11 +40,11 @@ func GetConfig() Config {
 }
 
 // Port :nodoc:
-func (cfg *Config) Port() string {
+func (cfg Config) Port() string {
 	return cfg.port
 }
 
 // CronInterval :nodoc:
-func (cfg *Config) CronInterval() uint64 {
+func (cfg Config) CronInterval() uint64 {
 	return cfg.cronInterval
 }
