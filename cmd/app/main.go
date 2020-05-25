@@ -7,6 +7,7 @@ import (
 	"syscall"
 
 	"github.com/jasonlvhit/gocron"
+	"github.com/miun173/rss-reader/config"
 	"github.com/miun173/rss-reader/db"
 	"github.com/miun173/rss-reader/repository"
 	"github.com/miun173/rss-reader/restapi"
@@ -15,6 +16,8 @@ import (
 )
 
 func main() {
+	cfg := config.GetConfig()
+
 	dbConn := db.NewSQLite3()
 	db.Migrate(dbConn)
 	defer dbConn.Close()
@@ -26,15 +29,15 @@ func main() {
 	wrk := worker.NewWorker(sourceRepo, rssItemRepo)
 
 	go func() {
-		log.Println("server start @ :8080")
+		log.Printf("server start @ :%s\n", cfg.Port())
 		log.Fatal(fasthttp.
-			ListenAndServe(":8080", server.Router().Handler),
+			ListenAndServe(":"+cfg.Port(), server.Router().Handler),
 		)
 	}()
 
 	go func() {
-		log.Println("start worker ...")
-		gocron.Every(1).Minute().Do(func() {
+		log.Printf("start worker ... every %d minute\n", cfg.CronInterval())
+		gocron.Every(cfg.CronInterval()).Minute().Do(func() {
 			wrk.FetchRSS()
 			log.Println("finished")
 		})
