@@ -50,7 +50,6 @@ func (w *Worker) FetchRSS() {
 	wgRss.Add(1)
 	go w.workSave(&wgRss, rssChan)
 
-	log.Println("find sources")
 	for {
 		sources, err := w.sourceRepo.FindAll(limit, offset)
 		if err != nil {
@@ -95,7 +94,6 @@ func (w *Worker) workSave(wg *sync.WaitGroup, rssChan chan rss) {
 }
 
 func (w *Worker) fetchItem(src model.Source) rss {
-
 	items, err := w.rssItemRepo.FetchFromSource(src.URL)
 	if err != nil {
 		log.Println("error: ", err)

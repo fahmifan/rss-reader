@@ -1,6 +1,6 @@
 module github.com/miun173/rss-reader
 
-go 1.17
+go 1.19
 
 require (
 	github.com/fasthttp/router v1.0.4
