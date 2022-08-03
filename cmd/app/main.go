@@ -35,9 +35,8 @@ func main() {
 
 	go func() {
 		log.Println("start worker ...")
-		cron.Every(1).Minute().Do(func() {
+		cron.Every(30).Minute().Do(func() {
 			wrk.FetchRSS()
-			log.Println("finished")
 		})
 		cron.StartBlocking()
 	}()
