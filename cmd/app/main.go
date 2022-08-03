@@ -4,9 +4,9 @@ import (
 	"log"
 	"os"
 	"os/signal"
-	"syscall"
+	"time"
 
-	"github.com/jasonlvhit/gocron"
+	"github.com/go-co-op/gocron"
 	"github.com/miun173/rss-reader/db"
 	"github.com/miun173/rss-reader/repository"
 	"github.com/miun173/rss-reader/restapi"
@@ -24,6 +24,7 @@ func main() {
 
 	server := restapi.NewServer(sourceRepo, rssItemRepo)
 	wrk := worker.NewWorker(sourceRepo, rssItemRepo)
+	cron := gocron.NewScheduler(time.Local)
 
 	go func() {
 		log.Println("server start @ :8080")
@@ -34,17 +35,17 @@ func main() {
 
 	go func() {
 		log.Println("start worker ...")
-		gocron.Every(1).Minute().Do(func() {
+		cron.Every(1).Minute().Do(func() {
 			wrk.FetchRSS()
 			log.Println("finished")
 		})
-		<-gocron.Start()
+		cron.StartBlocking()
 	}()
 
 	// block main go routine
-	osCh := make(chan os.Signal)
+	osCh := make(chan os.Signal, 1)
 	stopCh := make(chan bool)
-	signal.Notify(osCh, os.Interrupt, syscall.SIGTERM)
+	signal.Notify(osCh, os.Interrupt)
 	go func() {
 		<-osCh
 		log.Println("exiting process")
@@ -53,4 +54,5 @@ func main() {
 	}()
 
 	<-stopCh
+	cron.Stop()
 }

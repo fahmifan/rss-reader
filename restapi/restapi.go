@@ -34,7 +34,7 @@ func (s *Server) Router() *router.Router {
 	s.router.GET("/ping", ping)
 	s.router.GET("/sources/{id}", s.findSourceByID)
 	s.router.GET("/sources", s.findAllSources)
-	s.router.GET("/rss/source/{sourceID}", s.findRSSItemsBySourceID)
+	s.router.GET("/rss/sources/{sourceID}", s.findRSSItemsBySourceID)
 
 	return s.router
 }

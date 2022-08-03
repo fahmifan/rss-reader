@@ -56,9 +56,10 @@ func (w *Worker) FetchRSS() {
 func (w *Worker) fetchItems(sources []model.Source) {
 	rssCh := make(chan rss, len(sources))
 	wg := sync.WaitGroup{}
+
+	wg.Add(len(sources))
 	for _, src := range sources {
-		wg.Add(1)
-		log.Println("fetch rss items from ", src.Name)
+		log.Println("fetch rss items from ", src.URL)
 
 		go func(sourceID int64, url string) {
 			defer wg.Done()
