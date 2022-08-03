@@ -26,20 +26,22 @@ func main() {
 	wrk := worker.NewWorker(sourceRepo, rssItemRepo)
 	cron := gocron.NewScheduler(time.Local)
 
+	srv := &fasthttp.Server{
+		Handler: server.Router().Handler,
+	}
 	go func() {
 		log.Println("server start @ :8080")
-		log.Fatal(fasthttp.
-			ListenAndServe(":8080", server.Router().Handler),
-		)
+		if err := srv.ListenAndServe(":8080"); err != nil {
+			log.Println(err)
+		}
 	}()
 
-	go func() {
-		log.Println("start worker ...")
-		cron.Every(30).Minute().Do(func() {
-			wrk.FetchRSS()
-		})
-		cron.StartBlocking()
-	}()
+	cron.Every(30).Second().Do(func() {
+		wrk.FetchRSS()
+	})
+
+	log.Println("start worker ...")
+	cron.StartAsync()
 
 	// block main go routine
 	osCh := make(chan os.Signal, 1)
@@ -49,9 +51,16 @@ func main() {
 		<-osCh
 		log.Println("exiting process")
 		stopCh <- true
-		os.Exit(0)
 	}()
 
 	<-stopCh
+	log.Println("stopping cron")
 	cron.Stop()
+	log.Println("cron stopped")
+
+	log.Println("stopping server")
+	if err := srv.Shutdown(); err != nil {
+		log.Println(err)
+	}
+	log.Println("server stopped")
 }
